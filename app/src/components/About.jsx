@@ -31,7 +31,7 @@ const About = () => {
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.7 }}
-                src="/assets/IMG_5977.JPG.jpeg" 
+                src="/assets/env2.jpg" 
                 alt="Cafebrewpie Interior" 
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1000' }}

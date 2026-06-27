@@ -44,9 +44,9 @@ const Location = () => {
                 <div>
                   <h4 className="text-xl font-serif font-bold text-coffee-dark mb-2">Location</h4>
                   <p className="text-coffee-medium leading-relaxed">
-                    123 Espresso Lane<br />
-                    Coffee District<br />
-                    Brew City, BC 90210
+                    Dhirajganj, Gamharia<br />
+                    Jamshedpur, Jharkhand<br />
+                    832108
                   </p>
                 </div>
               </motion.div>
@@ -80,10 +80,15 @@ const Location = () => {
             </div>
 
             <motion.div variants={itemVariants} className="mt-10">
-              <button className="px-8 py-4 w-full sm:w-auto bg-coffee-terracotta text-coffee-cream rounded-full font-medium hover:bg-coffee-accent hover:-translate-y-1 transition-all duration-300 shadow-md flex items-center justify-center gap-2">
+              <a 
+                href="https://maps.app.goo.gl/eyWFd6E4kLQRceMX6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 w-full sm:w-auto bg-coffee-terracotta text-coffee-cream rounded-full font-medium hover:bg-coffee-accent hover:-translate-y-1 transition-all duration-300 shadow-md flex items-center justify-center gap-2 inline-flex"
+              >
                 <MapPin className="w-5 h-5" />
                 Get Directions
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -100,16 +105,17 @@ const Location = () => {
               transition={{ duration: 0.5 }}
               className="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative group"
             >
-              {/* Replace with actual iframe in production */}
-              <div className="absolute inset-0 bg-coffee-light/10 flex flex-col items-center justify-center z-10 transition-opacity duration-300 group-hover:bg-coffee-light/0">
-                <MapPin className="w-12 h-12 text-coffee-terracotta mb-2 group-hover:scale-125 transition-transform duration-500" />
-                <span className="text-coffee-dark font-bold bg-white/70 px-4 py-2 rounded-full backdrop-blur-sm group-hover:opacity-0 transition-opacity duration-300">Interactive Map Placeholder</span>
-              </div>
-              <img 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200" 
-                alt="Map Placeholder" 
-                className="w-full h-full object-cover opacity-80"
-              />
+              <iframe 
+                src="https://maps.google.com/maps?q=CAFE+BREWPIE,+Dhirajganj,+Gamharia,+Jamshedpur&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: "none" }} 
+                allowFullScreen
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full absolute inset-0 z-20"
+                title="Cafe Brewpie Location"
+              ></iframe>
             </motion.div>
           </motion.div>
 

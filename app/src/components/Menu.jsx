@@ -1,76 +1,82 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const menuItems = [
+const menuData = [
   {
-    id: 1,
-    name: "Classic Espresso",
-    description: "Rich, full-bodied espresso with notes of dark chocolate.",
-    price: "$3.50",
-    image: "/assets/IMG_5978.JPG.jpeg",
-    category: "Coffee"
+    category: "Pizza",
+    note: "Prices: Regular / Medium / Large",
+    items: [
+      { name: "Farmhouse Pizza", price: "₹190 / ₹230 / ₹340", image: "/assets/pizza1.jpeg" },
+      { name: "Margherita Pizza", price: "₹170 / ₹210 / ₹320" },
+      { name: "Tandoori Paneer Pizza", price: "₹230 / ₹290 / ₹360" },
+      { name: "Pizza Trio Special (3 Flavours)", price: "- / ₹260 / ₹350" },
+      { name: "Corn Pizza", price: "₹190 / ₹230 / ₹340" },
+      { name: "Tandoori Chicken Magic", description: "Nonveg", price: "₹210 / ₹260 / ₹350" }
+    ]
   },
   {
-    id: 2,
-    name: "Pour Over",
-    description: "Single-origin beans hand-poured for a clean, bright cup.",
-    price: "$4.50",
-    image: "/assets/IMG_6059.JPG.jpeg",
-    category: "Coffee"
+    category: "Pastries",
+    note: "",
+    items: [
+      { name: "Biscoff cheesecake", price: "₹80" },
+      { name: "Hazelnut pastry", price: "₹60" },
+      { name: "Cake pastry", price: "₹50" },
+      { name: "Creme brûlée", price: "₹100" },
+      { name: "Brownie with Ice Cream", price: "₹80" },
+      { name: "Tiramisu", description: "Contains Egg", price: "₹100" },
+      { name: "Biscoff Pastry", price: "₹60" },
+      { name: "Strawberry cheese cake", price: "₹80" },
+      { name: "Baked cheesecake", description: "Contains egg", price: "₹70" }
+    ]
   },
   {
-    id: 3,
-    name: "Vanilla Latte",
-    description: "Espresso and steamed milk with house-made vanilla bean syrup.",
-    price: "$5.00",
-    image: "/assets/IMG_6396.JPG.jpeg",
-    category: "Coffee"
+    category: "Cakes",
+    note: "Prices: 1 Pound / 2 Pound",
+    items: [
+      { name: "Chocolate Cake", price: "₹350 / ₹550", image: "/assets/cake1.jpeg" },
+      { name: "Red Velvet Cake", price: "₹300 / ₹500", image: "/assets/cake2.jpeg" },
+      { name: "Fruit Cake", price: "₹300 / ₹500", image: "/assets/cake3.jpeg" },
+      { name: "Vanilla Cake", price: "₹300 / ₹500", image: "/assets/cake4.jpeg" },
+      { name: "Cheesecake", price: "₹400 / ₹700" }
+    ]
   },
   {
-    id: 4,
-    name: "Almond Croissant",
-    description: "Flaky, buttery pastry filled with sweet almond frangipane.",
-    price: "$4.25",
-    image: "/assets/IMG_6397.JPG.jpeg",
-    category: "Pastry"
-  },
-  {
-    id: 5,
-    name: "Berry Tart",
-    description: "Seasonal berries on a bed of vanilla custard in a crisp shell.",
-    price: "$5.50",
-    image: "/assets/IMG_6629.JPG.jpeg",
-    category: "Pastry"
-  },
-  {
-    id: 6,
-    name: "Avocado Toast",
-    description: "Smashed avocado, chili flakes, and microgreens on sourdough.",
-    price: "$9.00",
-    image: "/assets/IMG_7164.JPG.jpeg",
-    category: "Specials"
+    category: "Coffee",
+    note: "",
+    items: [
+      { name: "Cold Coffee", price: "₹90", image: "/assets/coldcoffee.jpeg" },
+      { name: "Hot Chocolate", price: "₹90" },
+      { name: "Cappuccino", price: "Launching Soon" },
+      { name: "Americano", price: "Launching Soon" },
+      { name: "Flat White", price: "Launching Soon" }
+    ]
   }
 ];
 
 const Menu = () => {
+  const [activeCategory, setActiveCategory] = useState(menuData[0].category);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
   };
+
+  const activeData = menuData.find(c => c.category === activeCategory);
 
   return (
     <section id="menu" className="py-24 bg-[#FAF7F2] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -82,48 +88,69 @@ const Menu = () => {
               Carefully Crafted
             </h3>
             <p className="text-lg text-coffee-medium max-w-2xl mx-auto">
-              From our signature roasts to delicate, freshly baked pastries, everything we serve is made with love and precision.
+              From our signature pizzas to delicate, freshly baked pastries, everything we serve is made with love and precision. All prices are in INR (₹).
             </p>
           </motion.div>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {menuItems.map((item) => (
-            <motion.div 
-              key={item.id}
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-coffee-cream"
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {menuData.map((cat) => (
+            <button
+              key={cat.category}
+              onClick={() => setActiveCategory(cat.category)}
+              className={`px-6 py-2 rounded-full font-serif font-bold text-lg transition-all duration-300 ${
+                activeCategory === cat.category 
+                  ? 'bg-coffee-terracotta text-coffee-cream shadow-md scale-105'
+                  : 'bg-white text-coffee-dark hover:bg-coffee-light/20 border border-coffee-light/30'
+              }`}
             >
-              <div className="h-48 overflow-hidden relative">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1495474472201-35011d08d1f7?auto=format&fit=crop&q=80&w=800' }}
-                />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-coffee-dark uppercase tracking-wider">
-                  {item.category}
-                </div>
+              {cat.category}
+            </button>
+          ))}
+        </div>
+
+        {/* Menu Items */}
+        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-coffee-light/20 relative min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="w-full"
+            >
+              <div className="mb-8 text-center border-b border-coffee-light/20 pb-4">
+                <h4 className="text-3xl font-serif font-bold text-coffee-dark mb-2 tracking-wide uppercase">{activeCategory}</h4>
+                {activeData.note && (
+                  <p className="text-coffee-terracotta font-medium italic">{activeData.note}</p>
+                )}
               </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-xl font-serif font-bold text-coffee-dark">{item.name}</h4>
-                  <span className="text-lg font-bold text-coffee-terracotta">{item.price}</span>
-                </div>
-                <p className="text-coffee-medium text-sm leading-relaxed">
-                  {item.description}
-                </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                {activeData.items.map((item, index) => (
+                  <motion.div key={index} variants={itemVariants} className="flex justify-between items-center border-b border-coffee-light/10 pb-4 group gap-4">
+                    {item.image && (
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      </div>
+                    )}
+                    <div className="pr-4 flex-1">
+                      <h5 className="text-xl font-bold text-coffee-dark group-hover:text-coffee-terracotta transition-colors">{item.name}</h5>
+                      {item.description && (
+                        <p className="text-sm text-coffee-medium mt-1">{item.description}</p>
+                      )}
+                    </div>
+                    <div className="text-lg font-bold text-coffee-terracotta whitespace-nowrap text-right">
+                      {item.price}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </AnimatePresence>
+        </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -132,9 +159,9 @@ const Menu = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <button className="px-8 py-3 bg-coffee-dark text-coffee-cream rounded-full font-medium hover:bg-coffee-terracotta transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 transform duration-300">
-            Download Full Menu
-          </button>
+          <a href="/assets/menucard.jpeg" target="_blank" rel="noreferrer" className="inline-block px-8 py-3 bg-coffee-dark text-coffee-cream rounded-full font-medium hover:bg-coffee-terracotta transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 transform duration-300">
+            View Original Menu Card
+          </a>
         </motion.div>
       </div>
     </section>

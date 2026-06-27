@@ -2,11 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const galleryImages = [
-  "/assets/IMG_7220.JPG.jpeg",
-  "/assets/IMG_7221.JPG.jpeg",
-  "/assets/IMG_7222.JPG.jpeg",
+  "/assets/env1.jpg",
+  "/assets/env2.jpg",
+  "/assets/env3.jpg",
+  "/assets/env4.jpg",
+  "/assets/env5.jpg",
+  "/assets/env6.jpg",
+  "/assets/env7.jpg",
+  "/assets/env8.jpg",
+  "/assets/env9.jpg",
+  "/assets/env10.jpg",
+  "/assets/env11.jpg",
   "/assets/IMG_5977.JPG.jpeg",
   "/assets/IMG_5978.JPG.jpeg",
+  "/assets/IMG_6397.JPG.jpeg",
+  "/assets/IMG_7222.JPG.jpeg"
 ];
 
 const Gallery = () => {
