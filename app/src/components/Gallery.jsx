@@ -12,17 +12,13 @@ const galleryImages = [
   "/assets/env8.jpg",
   "/assets/env9.jpg",
   "/assets/env10.jpg",
-  "/assets/env11.jpg",
-  "/assets/IMG_5977.JPG.jpeg",
-  "/assets/IMG_5978.JPG.jpeg",
-  "/assets/IMG_6397.JPG.jpeg",
-  "/assets/IMG_7222.JPG.jpeg"
+  "/assets/env11.jpg"
 ];
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="py-24 bg-coffee-dark overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="py-16 bg-coffee-dark overflow-hidden">
+      <div className="w-full md:w-[60%] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
           <motion.div
@@ -52,8 +48,10 @@ const Gallery = () => {
             <img 
               src={galleryImages[0]} 
               alt="Gallery 1" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              style={{ minHeight: '400px' }}
+              style={{ minHeight: '240px' }}
               onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1000' }}
             />
             <div className="absolute inset-0 bg-coffee-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
@@ -72,6 +70,8 @@ const Gallery = () => {
               <img 
                 src={src} 
                 alt={`Gallery ${index + 2}`} 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                 style={{ aspectRatio: '1/1' }}
                 onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800' }}
