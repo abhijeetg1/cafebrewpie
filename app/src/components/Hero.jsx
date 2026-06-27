@@ -42,12 +42,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="pointer-events-auto flex gap-4"
+            className="pointer-events-auto flex flex-col sm:flex-row w-full sm:w-auto gap-4"
           >
-            <a href="#menu" className="px-8 py-4 bg-coffee-terracotta text-coffee-cream text-lg font-medium rounded-full shadow-lg hover:bg-coffee-accent hover:-translate-y-1 transition-all duration-300">
+            <a href="#menu" className="w-full sm:w-auto px-8 py-4 bg-coffee-terracotta text-coffee-cream text-lg font-medium rounded-full shadow-lg hover:bg-coffee-accent hover:-translate-y-1 transition-all duration-300 text-center">
               View Menu
             </a>
-            <a href="#location" className="px-8 py-4 bg-transparent border-2 border-coffee-cream text-coffee-cream text-lg font-medium rounded-full shadow-lg hover:bg-coffee-cream hover:text-coffee-dark transition-all duration-300 backdrop-blur-sm">
+            <a href="#location" className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-coffee-cream text-coffee-cream text-lg font-medium rounded-full shadow-lg hover:bg-coffee-cream hover:text-coffee-dark transition-all duration-300 backdrop-blur-sm text-center">
               Visit Us
             </a>
           </motion.div>

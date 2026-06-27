@@ -130,19 +130,21 @@ const Menu = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                 {activeData.items.map((item, index) => (
-                  <motion.div key={index} variants={itemVariants} className="flex justify-between items-center border-b border-coffee-light/10 pb-4 group gap-4">
-                    {item.image && (
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                      </div>
-                    )}
-                    <div className="pr-4 flex-1">
-                      <h5 className="text-xl font-bold text-coffee-dark group-hover:text-coffee-terracotta transition-colors">{item.name}</h5>
-                      {item.description && (
-                        <p className="text-sm text-coffee-medium mt-1">{item.description}</p>
+                  <motion.div key={index} variants={itemVariants} className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-coffee-light/10 pb-4 group gap-2 sm:gap-4">
+                    <div className="flex items-center gap-4 w-full">
+                      {item.image && (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+                          <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        </div>
                       )}
+                      <div className="pr-4 flex-1">
+                        <h5 className="text-lg sm:text-xl font-bold text-coffee-dark group-hover:text-coffee-terracotta transition-colors">{item.name}</h5>
+                        {item.description && (
+                          <p className="text-sm text-coffee-medium mt-1">{item.description}</p>
+                        )}
+                      </div>
                     </div>
-                    <div className="text-lg font-bold text-coffee-terracotta whitespace-nowrap text-right">
+                    <div className="text-base sm:text-lg font-bold text-coffee-terracotta text-right sm:whitespace-nowrap self-end sm:self-auto mt-1 sm:mt-0">
                       {item.price}
                     </div>
                   </motion.div>
